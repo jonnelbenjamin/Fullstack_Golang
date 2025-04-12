@@ -1,0 +1,15 @@
+<div class="task {{ if .Completed }}completed{{ end }}" id="task-{{ .ID }}">
+    <div class="task-content">
+        <span>{{ .Title }}</span>
+        <small>{{ .CreatedAt.Format "Jan 02, 3:04 PM" }}</small>
+    </div>
+    
+    <div class="task-actions">
+        <button hx-put="/tasks/{{ .ID }}" hx-swap="outerHTML" hx-target="#task-{{ .ID }}">
+            {{ if .Completed }}Undo{{ else }}Complete{{ end }}
+        </button>
+        <button hx-delete="/tasks/{{ .ID }}" hx-target="#task-{{ .ID }}" hx-swap="outerHTML">
+            Delete
+        </button>
+    </div>
+</div>

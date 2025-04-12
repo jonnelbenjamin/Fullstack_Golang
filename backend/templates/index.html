@@ -1,0 +1,11 @@
+{{ define "content" }}
+<h1>Task Manager</h1>
+
+<div class="card">
+    {{ template "task-form" }}
+
+    <div id="task-list" hx-get="/tasks" hx-trigger="load, taskUpdate from:body">
+        {{ template "task-list" . }}
+    </div>
+</div>
+{{ end }}
